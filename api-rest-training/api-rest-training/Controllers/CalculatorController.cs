@@ -30,14 +30,14 @@ namespace api_rest_training.Controllers
             return BadRequest("Invalid input");
         }
         //GET api/value/sub/5/5
-        [HttpGet("sub/{firsNumber}/{secondNumber}")]
-        public IActionResult sub(string firstNumber, string secondNumber)
+        [HttpGet("sub/{firstNumber}/{secondNumber}")]
+        public IActionResult Sub(string firstNumber, string secondNumber)
         {
             var number1 = Dye.IsNumeric(firstNumber);
             var number2 = Dye.IsNumeric(secondNumber);
             if (number1 && number2)
             {
-                var sub = Dye.ConvertToDecimal(firstNumber) + Dye.ConvertToDecimal(secondNumber);
+                var sub = Dye.ConvertToDecimal(firstNumber) - Dye.ConvertToDecimal(secondNumber);
                 return Ok(sub.ToString());
             }
             return BadRequest("Invalid input");
