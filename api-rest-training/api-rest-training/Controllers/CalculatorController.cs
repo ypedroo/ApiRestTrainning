@@ -42,6 +42,32 @@ namespace api_rest_training.Controllers
             }
             return BadRequest("Invalid input");
         }
+        //GET api/value/mult/5/5
+        [HttpGet("mult/{firstNumber}/{secondNumber}")]
+        public IActionResult Mult(string firstNumber, string secondNumber)
+        {
+            var number1 = Dye.IsNumeric(firstNumber);
+            var number2 = Dye.IsNumeric(secondNumber);
+            if (number1 && number2)
+            {
+                var sub = Dye.ConvertToDecimal(firstNumber) * Dye.ConvertToDecimal(secondNumber);
+                return Ok(sub.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
+        //GET api/value/div/5/5
+        [HttpGet("div/{firstNumber}/{secondNumber}")]
+        public IActionResult Div(string firstNumber, string secondNumber)
+        {
+            var number1 = Dye.IsNumeric(firstNumber);
+            var number2 = Dye.IsNumeric(secondNumber);
+            if (number1 && number2)
+            {
+                var sub = Dye.ConvertToDecimal(firstNumber) / Dye.ConvertToDecimal(secondNumber);
+                return Ok(sub.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
 
 
     }
