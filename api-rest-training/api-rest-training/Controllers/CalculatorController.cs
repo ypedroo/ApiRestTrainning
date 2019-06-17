@@ -50,8 +50,8 @@ namespace api_rest_training.Controllers
             var number2 = Dye.IsNumeric(secondNumber);
             if (number1 && number2)
             {
-                var sub = Dye.ConvertToDecimal(firstNumber) * Dye.ConvertToDecimal(secondNumber);
-                return Ok(sub.ToString());
+                var mult = Dye.ConvertToDecimal(firstNumber) * Dye.ConvertToDecimal(secondNumber);
+                return Ok(mult.ToString());
             }
             return BadRequest("Invalid input");
         }
@@ -63,8 +63,34 @@ namespace api_rest_training.Controllers
             var number2 = Dye.IsNumeric(secondNumber);
             if (number1 && number2)
             {
-                var sub = Dye.ConvertToDecimal(firstNumber) / Dye.ConvertToDecimal(secondNumber);
-                return Ok(sub.ToString());
+                var div = Dye.ConvertToDecimal(firstNumber) / Dye.ConvertToDecimal(secondNumber);
+                return Ok(div.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
+        //GET api/value/mean/5/5
+        [HttpGet("mean/{firstNumber}/{secondNumber}")]
+        public IActionResult Mean(string firstNumber, string secondNumber)
+        {
+            var number1 = Dye.IsNumeric(firstNumber);
+            var number2 = Dye.IsNumeric(secondNumber);
+            if (number1 && number2) 
+            {
+                var mean = (Dye.ConvertToDecimal(firstNumber) + Dye.ConvertToDecimal(secondNumber) )/ 2;
+                return Ok(mean.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+        //GET api/values/sqrt/5
+        [HttpGet("sqrt/{firstNumber}")]
+        public IActionResult Sqrt(string firstNumber)
+        {
+            var number = Dye.IsNumeric(firstNumber);
+            var numberFormat = Dye.ConvertToDecimal(firstNumber);
+            if (number)
+            {
+                var sqrt = Math.Sqrt(decimal.ToDouble(numberFormat));
+                return Ok(sqrt.ToString());
             }
             return BadRequest("Invalid input");
         }
