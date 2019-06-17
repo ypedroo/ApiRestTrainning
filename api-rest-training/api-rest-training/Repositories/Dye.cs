@@ -1,14 +1,14 @@
-﻿using System;
+﻿using api_rest_training.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using api_rest_training.Services.Interfaces;
 
-namespace api_rest_training.Services
+namespace api_rest_training.Repositories
 {
     public class Dye : IDye
     {
-        private decimal ConvertToDecimal(string number)
+        public decimal ConvertToDecimal(string number)
         {
             decimal decimalValue;
             if (decimal.TryParse(number, out decimalValue))
@@ -18,7 +18,7 @@ namespace api_rest_training.Services
             return 0;
         }
 
-        private bool IsNumeric(string strNumber)
+        public bool IsNumeric(string strNumber)
         {
             double number;
 

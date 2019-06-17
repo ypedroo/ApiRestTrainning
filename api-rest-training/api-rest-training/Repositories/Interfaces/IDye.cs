@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace api_rest_training.Services.Interfaces
+namespace api_rest_training.Repositories.Interfaces
 {
     public interface IDye
     {
