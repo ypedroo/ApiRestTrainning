@@ -13,6 +13,6 @@ namespace api_rest_training.Services.Interfaces
         Person FindViewById(long id);
         List<Person> FindAll();
         Person Update(Person person);
-        void Delete(Person person);
+        void Delete(long id);
     }
 }

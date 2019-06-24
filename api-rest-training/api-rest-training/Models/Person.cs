@@ -8,9 +8,9 @@ namespace api_rest_training.Models
     public class Person
     {
         public long Id { get; set; }
-        public long FirstNmae { get; set; }
-        public long LastName { get; set; }
-        public long Address { get; set; }
-        public long Gender { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string Gender { get; set; }
     }
 }
