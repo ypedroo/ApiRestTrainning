@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace api_rest_training.Repositories
 {
-    public class Dye : IDye
+    public class CalculatorRepository : ICalculatorRepository
     {
         public decimal ConvertToDecimal(string number)
         {

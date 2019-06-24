@@ -11,20 +11,20 @@ namespace api_rest_training.Controllers
     [ApiController]
     public class CalculatorController : ControllerBase
     {
-        private readonly IDye Dye;
-        public CalculatorController(IDye Dye)
+        private readonly ICalculatorRepository calc;
+        public CalculatorController(ICalculatorRepository calc)
         {
-            this.Dye = Dye;
+            this.calc = calc;
         }
         // GET api/values/sum/5/5
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
         public IActionResult Sum(string firstNumber, string secondNumber)
         {
-            var number1 = Dye.IsNumeric(firstNumber);
-            var number2 = Dye.IsNumeric(secondNumber);
+            var number1 = calc.IsNumeric(firstNumber);
+            var number2 = calc.IsNumeric(secondNumber);
             if (number1 && number2)
             {
-                var sum = Dye.ConvertToDecimal(firstNumber) + Dye.ConvertToDecimal(secondNumber);
+                var sum = calc.ConvertToDecimal(firstNumber) + calc.ConvertToDecimal(secondNumber);
                 return Ok(sum.ToString());
             }
             return BadRequest("Invalid input");
@@ -33,11 +33,11 @@ namespace api_rest_training.Controllers
         [HttpGet("sub/{firstNumber}/{secondNumber}")]
         public IActionResult Sub(string firstNumber, string secondNumber)
         {
-            var number1 = Dye.IsNumeric(firstNumber);
-            var number2 = Dye.IsNumeric(secondNumber);
+            var number1 = calc.IsNumeric(firstNumber);
+            var number2 = calc.IsNumeric(secondNumber);
             if (number1 && number2)
             {
-                var sub = Dye.ConvertToDecimal(firstNumber) - Dye.ConvertToDecimal(secondNumber);
+                var sub = calc.ConvertToDecimal(firstNumber) - calc.ConvertToDecimal(secondNumber);
                 return Ok(sub.ToString());
             }
             return BadRequest("Invalid input");
@@ -46,11 +46,11 @@ namespace api_rest_training.Controllers
         [HttpGet("mult/{firstNumber}/{secondNumber}")]
         public IActionResult Mult(string firstNumber, string secondNumber)
         {
-            var number1 = Dye.IsNumeric(firstNumber);
-            var number2 = Dye.IsNumeric(secondNumber);
+            var number1 = calc.IsNumeric(firstNumber);
+            var number2 = calc.IsNumeric(secondNumber);
             if (number1 && number2)
             {
-                var mult = Dye.ConvertToDecimal(firstNumber) * Dye.ConvertToDecimal(secondNumber);
+                var mult = calc.ConvertToDecimal(firstNumber) * calc.ConvertToDecimal(secondNumber);
                 return Ok(mult.ToString());
             }
             return BadRequest("Invalid input");
@@ -59,11 +59,11 @@ namespace api_rest_training.Controllers
         [HttpGet("div/{firstNumber}/{secondNumber}")]
         public IActionResult Div(string firstNumber, string secondNumber)
         {
-            var number1 = Dye.IsNumeric(firstNumber);
-            var number2 = Dye.IsNumeric(secondNumber);
+            var number1 = calc.IsNumeric(firstNumber);
+            var number2 = calc.IsNumeric(secondNumber);
             if (number1 && number2)
             {
-                var div = Dye.ConvertToDecimal(firstNumber) / Dye.ConvertToDecimal(secondNumber);
+                var div = calc.ConvertToDecimal(firstNumber) / calc.ConvertToDecimal(secondNumber);
                 return Ok(div.ToString());
             }
             return BadRequest("Invalid input");
@@ -72,11 +72,11 @@ namespace api_rest_training.Controllers
         [HttpGet("mean/{firstNumber}/{secondNumber}")]
         public IActionResult Mean(string firstNumber, string secondNumber)
         {
-            var number1 = Dye.IsNumeric(firstNumber);
-            var number2 = Dye.IsNumeric(secondNumber);
+            var number1 = calc.IsNumeric(firstNumber);
+            var number2 = calc.IsNumeric(secondNumber);
             if (number1 && number2) 
             {
-                var mean = (Dye.ConvertToDecimal(firstNumber) + Dye.ConvertToDecimal(secondNumber) )/ 2;
+                var mean = (calc.ConvertToDecimal(firstNumber) + calc.ConvertToDecimal(secondNumber) )/ 2;
                 return Ok(mean.ToString());
             }
             return BadRequest("Invalid Input");
@@ -85,8 +85,8 @@ namespace api_rest_training.Controllers
         [HttpGet("sqrt/{firstNumber}")]
         public IActionResult Sqrt(string firstNumber)
         {
-            var number = Dye.IsNumeric(firstNumber);
-            var numberFormat = Dye.ConvertToDecimal(firstNumber);
+            var number = calc.IsNumeric(firstNumber);
+            var numberFormat = calc.ConvertToDecimal(firstNumber);
             if (number)
             {
                 var sqrt = Math.Sqrt(decimal.ToDouble(numberFormat));

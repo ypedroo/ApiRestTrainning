@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api_rest_training.Repositories.Interfaces
 {
-    public interface IDye
+    public interface ICalculatorRepository
     {
         Decimal ConvertToDecimal(string number);
         bool IsNumeric(string number);
