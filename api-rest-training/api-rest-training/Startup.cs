@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using api_rest_training.Repositories;
 using api_rest_training.Repositories.Interfaces;
+using api_rest_training.Services.Implementation;
+using api_rest_training.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +30,10 @@ namespace api_rest_training
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //DI
             services.AddTransient<ICalculatorRepository, CalculatorRepository>();
+            services.AddTransient<IPersonServices, PersonImplementation>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

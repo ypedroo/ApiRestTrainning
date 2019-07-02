@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api_rest_training.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api_rest_training.Controllers
@@ -10,6 +11,13 @@ namespace api_rest_training.Controllers
     [ApiController]
     public class PersonsController : ControllerBase
     {
+        //Instaciate DI obj
+        private IPersonServices _personService;
+
+        public PersonsController(IPersonServices personServices)
+        {
+            _personService = personServices;
+        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

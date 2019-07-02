@@ -10,6 +10,7 @@ namespace api_rest_training.Services.Implementation
 {
     public class PersonImplementation : IPersonServices
     {
+        //Every time it runs volatile sets count to default value in this particular case its 0
         private volatile int count;
 
         public Person Create(Person person)
