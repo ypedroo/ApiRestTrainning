@@ -45,14 +45,18 @@ namespace api_rest_training.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] string value)
+        public IActionResult Put([FromBody] Person person)
         {
+            if (person == null) return NotFound();
+            return new ObjectResult(personService.Update(person));
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            personService.Delete(id);
+            return NoContent();
         }
     }
 }
